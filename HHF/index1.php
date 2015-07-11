@@ -6,18 +6,18 @@
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="description" content="Meghna One page parallax responsive HTML Template ">
-        
+
         <meta name="author" content="Muhammad Morshed">
-		
-        <title>Happy Hearts Fund</title>
-		
+
+        <title>Meghna | Responsive Multipurpose Parallax HTML5 Template</title>
+
 		<!-- Mobile Specific Meta
 		================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
-		
+
 		<!-- CSS
 		================================================== -->
 		<!-- Fontawesome Icon font -->
@@ -39,14 +39,14 @@
 
 		<!--
 		Google Font
-		=========================== -->                    
-		
+		=========================== -->
+
 		<!-- Oswald / Title Font -->
 		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 		<!-- Ubuntu / Body Font -->
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300' rel='stylesheet' type='text/css'>
-		
-		<!-- Modernizer Script for old Browsers -->		
+
+		<!-- Modernizer Script for old Browsers -->
         <script src="js/modernizr-2.6.2.min.js"></script>
 
 
@@ -55,19 +55,20 @@
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		
+
 		  ga('create', 'UA-54152927-1', 'auto');
 		  ga('send', 'pageview');
-		
+
 		</script>
-	
+
     </head>
-	
+
     <body id="body">
+
 	    <!--
 	    Start Preloader
 	    ==================================== -->
-		<!--<div id="loading-mask">
+	<!--	<div id="loading-mask">
 			<div class="loading-img">
 				<img alt="Meghna Preloader" src="img/preloader.gif"  />
 			</div>
@@ -75,14 +76,12 @@
         <!--
         End Preloader
         ==================================== -->
-		
+
         <!--
         Welcome Slider
         ==================================== -->
-			
-		<!--/#home section-->
-		
-        <!-- 
+
+        <!--
         Fixed Navigation
         ==================================== -->
         <header id="navigation" class="navbar navbar-inverse">
@@ -96,11 +95,11 @@
                         <span class="icon-bar"></span>
                     </button>
 					<!-- /responsive nav button -->
-					
+
 					<!-- logo -->
                     <a class="navbar-brand" href="#body">
 						<h1 id="logo">
-							<img src="img/logo.png" alt="HHF" />
+							<img src="img/logo-meghna.png" alt="Meghna" />
 						</h1>
 					</a>
 					<!-- /logo -->
@@ -110,170 +109,201 @@
                 <nav class="collapse navbar-collapse navbar-right" role="Navigation">
                     <ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="#body">Home</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#services">Create Challenge</a></li>
-                        <li><a href="index.html#showcase">Our Events</a></li>
-                        <li><a href="index.html#our-team">Collaborate</a></li>
-                        <li><a href="index.html#pricing">Donate</a></li>
-                        <li><a href="index.html#contact-us">About Us</a></li>
-						<li><a style="color:#6cb670" href="signup.html">SignUp</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#showcase">Portfolio</a></li>
+                        <li><a href="#our-team">Team</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact-us">Contact</a></li>
                     </ul>
                 </nav>
 				<!-- /main nav -->
-				
+
             </div>
         </header>
-        
+        <!--
+        End Fixed Navigation
+        ==================================== -->
 
-		
+        <?php
+    	$con=mysqli_connect('localhost', 'root', '','hhf') or trigger_error("Unable to connect to the database: " . mysqli_error());
+    //	mysqli_select_db('hhf') or trigger_error("Unable to switch to the database: " . mysqli_error());
+    	$result=mysqli_query($con,"SELECT * FROM challenges");
+          	?>
 
-		<!--
-		Start Blog Section
+
+    <!--
+    		Start Blog Section
+    		=========================================== -->
+
+    		<section id="blog" class="bg-one">
+    			<div class="container">
+    				<div class="row">
+
+    					<!-- section title -->
+    					<div class="title text-center wow fadeInDown">
+    						<h2> Chall <span class="color">enges</span></h2>
+    						<div class="border"></div>
+    					</div>
+    					<!-- /section title -->
+
+
+
+
+
+    					<div class="clearfix">
+                <?php
+                        $i=1;
+                        while($row=mysqli_fetch_array($result))
+                             {
+                            ?>
+
+    						<!-- single blog post -->
+    						<article class="col-md-3 col-sm-6 col-xs-12 clearfix wow fadeInUp" data-wow-duration="500ms">
+                  <div class="note">
+    								<div class="media-wrapper">
+    									<img src="<?php echo $row['c_image']; ?>"  alt="Meghna" class="img-responsive">
+    								</div>
+
+    								<div class="excerpt">
+    									<h3><?php echo $row['challengeName']; ?></h3>
+    									<p><?php echo $row['description']; ?></p>
+    									<a class="btn btn-transparent" href="facebook.com">Challenge me</a>
+                      </div>
+                      <a href="<?php echo $row['link']; ?>"><img src="img/blog/face.png"></a>
+                      <a class="twitter-share-button"
+                      href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button%3Fsrc%3Dtwitter"
+                      data-counturl="<?php echo $row['link']; ?>"><img src="img/blog/tweet.png" height="40" width="90"></a>
+
+
+    							</div>
+
+    						</article>
+                <?php
+                $i++;}
+                ?>
+    					</div>
+
+
+    					<div class="all-post text-center">
+                <h3>Post your Challenge</h3>
+                <form name="challenge" method="post" action="uploader.php" enctype="multipart/form-data">
+                <table align="center" rows=3 cols=2>
+                  <tr style="text-align:left;">
+                <td><h4>Name of Challenge:</h4> </td><td><input type="text" name="challengeName"></td></tr>
+                <tr style="text-align:left;"><td><h4>Link:</h4> </td><td><input type="text" name="link"></td></tr>
+    						<tr style="text-align:left;"><td><h4>Description:</h4></td> <td><textarea name="description" rows="4" cols="30"></textarea></td></tr>
+
+                <tr><h4>Share your Photo or Video:</h4></tr>
+    <td><input type="file" name="fileToUpload" id="fileToUpload" size="50" /></td></tr></table>
+                <br><input type="submit" value="Submit your challenge" class="btn btn-transparent"></a>
+    					</form>
+              </div>
+
+    				</div> <!-- end row -->
+    			</div> <!-- end container -->
+    		</section> <!-- end section -->
+
+
+
+
+		<!-- Srart Contact Us
 		=========================================== -->
-<section id="about" class="bg-one">
+		<section id="contact-us">
 			<div class="container">
 				<div class="row">
-				
+
 					<!-- section title -->
-					<div class="title text-center wow fadeIn" data-wow-duration="1500ms" >
-						<h2>About <span class="color">Us</span></h2>
+					<div class="title text-center wow fadeIn" data-wow-duration="500ms">
+						<h2>Get In <span class="color">Touch</span></h2>
 						<div class="border"></div>
 					</div>
 					<!-- /section title -->
-					
-					<!-- About item -->
-					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
-						<div class="wrap-about">							
-							<div class="icon-box">
-								<i class="fa fa-lightbulb-o fa-4x"></i>
-							</div>					
-							<!-- Express About Yourself -->
-							<div class="about-content text-center">
-								<h3 class="ddd">We're Creative</h3>								
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos</p>
-							</div>
-						</div>
-					</div> 
-					<!-- End About item -->
-					
-					<!-- About item -->
-					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms">
-						<div class="wrap-about">
-							<div class="icon-box">
-								<i class="fa fa-users fa-4x"></i>
-							</div>
-							<!-- Express About Yourself -->
-							<div class="about-content text-center">
-								<h3>We're Professional</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos</p>
-							</div>
-						</div>
-					</div> 
-					<!-- End About item -->
-					
-					<!-- About item -->					
-					<div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
-						<div class="wrap-about kill-margin-bottom">
-							<div class="icon-box">
-								<i class="fa fa-users fa-4x"></i>
-							</div>
-							<!-- Express About Yourself -->
-							<div class="about-content text-center">
-								<h3>We're Professional</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, nihil, libero, perspiciatis eos provident laborum eum dignissimos</p>
-							</div>
-						</div>
-					</div> 
-					<!-- End About item -->
-					
-				</div> 		<!-- End row -->
-			</div>   	<!-- End container -->
-		</section>   <!-- End section -->
-		<?php
-	$con=mysqli_connect('localhost', 'root', '','hhf') or trigger_error("Unable to connect to the database: " . mysqli_error()); 
-	//mysqli_select_db('hhf') or trigger_error("Unable to switch to the database: " . mysqli_error()); 
-	$result=mysqli_query($con,"SELECT * FROM events");
-	$result2=mysqli_query($con,"SELECT * FROM past_events");
-	?>
-		<section id="showcase">
-			<div class="container">
-				<div class="row wow fadeInDown" data-wow-duration="500ms">
-					<div class="col-lg-12">
-					
-						<!-- section title -->
-						<div class="title text-center">
-							<h2>Our <span class="color">Events</span></h2>
-							<div class="border"></div>
-						</div>
-						<!-- /section title -->
-						<div class="portfolio-filter clearfix">
-							<ul class="text-center">
-								<li><a href="javascript:void(0)" class="filter" data-filter="all">All Events</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".app">Upcoming Events</a></li>
-								<li><a href="javascript:void(0)" class="filter" data-filter=".web">Past Events</a></li>
-							</ul>
-						</div>
-					
 
-					</div> <!-- /end col-lg-12 -->
+					<!-- Contact Details -->
+					<div class="contact-info col-md-6 wow fadeInUp" data-wow-duration="500ms">
+						<h3>Contact Details</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, vero, provident, eum eligendi blanditiis ex explicabo vitae nostrum facilis asperiores dolorem illo officiis ratione vel fugiat dicta laboriosam labore adipisci.</p>
+						<div class="contact-details">
+							<div class="con-info clearfix">
+								<i class="fa fa-home fa-lg"></i>
+								<span>Khaja Road, Bayzid, Chittagong, Bangladesh</span>
+							</div>
+
+							<div class="con-info clearfix">
+								<i class="fa fa-phone fa-lg"></i>
+								<span>Phone: +880-31-000-000</span>
+							</div>
+
+							<div class="con-info clearfix">
+								<i class="fa fa-fax fa-lg"></i>
+								<span>Fax: +880-31-000-000</span>
+							</div>
+
+							<div class="con-info clearfix">
+								<i class="fa fa-envelope fa-lg"></i>
+								<span>Email: hello@meghna.com</span>
+							</div>
+						</div>
+					</div>
+					<!-- / End Contact Details -->
+
+					<!-- Contact Form -->
+					<div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+						<form id="contact-form" method="post" action="sendmail.php" role="form">
+
+							<div class="form-group">
+								<input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
+							</div>
+
+							<div class="form-group">
+								<input type="email" placeholder="Your Email" class="form-control" name="email" id="email">
+							</div>
+
+							<div class="form-group">
+								<input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
+							</div>
+
+							<div class="form-group">
+								<textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>
+							</div>
+
+							<div id="mail-success" class="success">
+								Thank you. The Mailman is on His Way :)
+							</div>
+
+							<div id="mail-fail" class="error">
+								Sorry, don't know what happened. Try later :(
+							</div>
+
+							<div id="cf-submit">
+								<input type="submit" id="contact-submit" class="btn btn-transparent" value="Submit">
+							</div>
+
+						</form>
+					</div>
+					<!-- ./End Contact Form -->
+
 				</div> <!-- end row -->
-			</div>	<!-- end container -->
-		
-			<!-- portfolio items -->
-			<div class="portfolio-item-wrapper wow fadeInUp" data-wow-duration="500ms">
-                <ul id="og-grid" class="og-grid">
-				<?php 
-				$i=1;
-       			while($row=mysqli_fetch_array($result))
-       			 {
-        		?>
-					<!-- single portfolio item -->	
-					<li class="mix app">
-						<a href="javascript:void(0)" data-largesrc="<?php echo $row['e_image']; ?>" data-title="<?php echo $row['e_name']; ?>" data-description="<?php echo $row['about']; ?><br />Location: <?php echo $row['location']; ?><br />Date: <?php echo $row['date']; ?><br />Time: <?php echo $row['time']; ?>">
-							<!--<img src="<?php echo $row['e_image']; ?>" alt="Meghna">-->
-							<div class="hover-mask">
-								<h3><?php echo $row['e_name']; ?></h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					<?php 
-					$i++;}
-					?>
+			</div> <!-- end container -->
 
-					<?php 
-				$j=1;
-       			while($row1=mysqli_fetch_array($result2))
-       			 {
-        		?>
-					<!-- single portfolio item -->	
-					<li class="mix web">
-						<a href="javascript:void(0)" data-largesrc="<?php echo $row1['e_image']; ?>" data-title="<?php echo $row1['e_name']; ?>" data-description="<?php echo $row1['about']; ?><br />Location: <?php echo $row1['location']; ?><br />Date: <?php echo $row1['date']; ?><br />Time: <?php echo $row1['time']; ?><br />Percentage Attendance: <?php echo $row1['p_attendance']; ?>%<br />Money Collected: $<?php echo $row1['m_collected']; ?>">
-							<img src="<?php echo $row1['e_image']; ?>" alt="Meghna">
-							<div class="hover-mask">
-								<h3><?php echo $row1['e_name']; ?></h3>
-								<span>
-									<i class="fa fa-plus fa-2x"></i>
-								</span>
-							</div>
-						</a>
-					</li>
-					<!-- /single portfolio item -->
-					<?php 
-					$j++;}
-					?>
-					
-			
-		</section>   <!-- End section -->
-		
+			<!-- Google Map -->
+			<div class="google-map wow fadeInDown" data-wow-duration="500ms">
+				<div id="map-canvas"></div>
+			</div>
+			<!-- /Google Map -->
+
+		</section> <!-- end section -->
+
+		<!-- end Contact Area
+		========================================== -->
+
 		<footer id="footer" class="bg-one">
 			<div class="container">
 			    <div class="row wow fadeInUp" data-wow-duration="500ms">
 					<div class="col-lg-12">
-						
+
 						<!-- Footer Social Links -->
 						<div class="social-icon">
 							<ul>
@@ -291,32 +321,32 @@
 						<!-- copyright -->
 						<div class="copyright text-center">
 							<a href="index.html">
-								<img src="img/logo.png" alt="HHF" /> 
+								<img src="img/logo-meghna.png" alt="Meghna" />
 							</a>
 							<br />
-							
-							
+
+							<p>Design And Developed by <a href="http://www.themefisher.com"> Themefisher Team</a>. Copyright &copy; 2015. All Rights Reserved.</p>
 						</div>
 						<!-- /copyright -->
-						
+
 					</div> <!-- end col lg 12 -->
 				</div> <!-- end row -->
 			</div> <!-- end container -->
 		</footer> <!-- end footer -->
-		
+
 		<!-- Back to Top
 		============================== -->
 		<a href="javascript:;" id="scrollUp">
 			<i class="fa fa-angle-up fa-2x"></i>
 		</a>
-		
+
 		<!-- end Footer Area
 		========================================== -->
-		
-		<!-- 
+
+		<!--
 		Essential Scripts
 		=====================================-->
-		
+
 		<!-- Main jQuery -->
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<!-- Bootstrap 3.1 -->
