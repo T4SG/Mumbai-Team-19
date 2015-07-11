@@ -193,6 +193,7 @@
 	$con=mysqli_connect('localhost', 'root', '','hhf') or trigger_error("Unable to connect to the database: " . mysqli_error()); 
 	//mysqli_select_db('hhf') or trigger_error("Unable to switch to the database: " . mysqli_error()); 
 	$result=mysqli_query($con,"SELECT * FROM events");
+	$result2=mysqli_query($con,"SELECT * FROM past_events");
 	?>
 		<section id="showcase">
 			<div class="container">
@@ -205,6 +206,13 @@
 							<div class="border"></div>
 						</div>
 						<!-- /section title -->
+						<div class="portfolio-filter clearfix">
+							<ul class="text-center">
+								<li><a href="javascript:void(0)" class="filter" data-filter="all">All Events</a></li>
+								<li><a href="javascript:void(0)" class="filter" data-filter=".app">Upcoming Events</a></li>
+								<li><a href="javascript:void(0)" class="filter" data-filter=".web">Past Events</a></li>
+							</ul>
+						</div>
 					
 
 					</div> <!-- /end col-lg-12 -->
@@ -235,10 +243,29 @@
 					<?php 
 					$i++;}
 					?>
+
+					<?php 
+				$j=1;
+       			while($row1=mysqli_fetch_array($result2))
+       			 {
+        		?>
+					<!-- single portfolio item -->	
+					<li class="mix web">
+						<a href="javascript:void(0)" data-largesrc="<?php echo $row1['e_image']; ?>" data-title="<?php echo $row1['e_name']; ?>" data-description="<?php echo $row1['about']; ?><br />Location: <?php echo $row1['location']; ?><br />Date: <?php echo $row1['date']; ?><br />Time: <?php echo $row1['time']; ?><br />Percentage Attendance: <?php echo $row1['p_attendance']; ?>%<br />Money Collected: $<?php echo $row1['m_collected']; ?>">
+							<img src="<?php echo $row1['e_image']; ?>" alt="Meghna">
+							<div class="hover-mask">
+								<h3><?php echo $row1['e_name']; ?></h3>
+								<span>
+									<i class="fa fa-plus fa-2x"></i>
+								</span>
+							</div>
+						</a>
+					</li>
+					<!-- /single portfolio item -->
+					<?php 
+					$j++;}
+					?>
 					
-					
-				</ul> <!-- end og grid -->
-			</div>  <!-- portfolio items wrapper -->
 			
 		</section>   <!-- End section -->
 		
