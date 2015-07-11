@@ -1,0 +1,9 @@
+   if(isset($_POST['submit']))
+            {
+                $str= "insert into users(type,email,password,repassword) values('donor','".$_POST["email"]."','".$_POST["password"]."','".$_POST['repassword']."');";
+                $result=mysqli_query($con,$str);
+                
+                $sql= "insert into donor(u_id,name) values(LAST_INSERT_ID(),'".$_POST['name']."');"; 
+                $result=mysqli_query($con,$str);
+                header("location:donate.php");
+            } 
