@@ -17,6 +17,9 @@
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
 		<!-- CSS
 		================================================== -->
@@ -209,7 +212,7 @@
 								
 								<!-- features content -->
 								<div class="col-md-6 feature-desc wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
-									<h3>Our Innovative Venture by JP Morgan Chase</h3>
+									<h3>Our Innovative Venture with JP Morgan Chase</h3>
 						
 								</div>
 								<!-- /features content -->
@@ -270,7 +273,10 @@
                     <td><?php echo $row['c_year']; ?></td>
                     <td><?php echo $row['d_amount']; ?></td>
                     <td><?php echo $row['m_required']; ?></td>
-                  	<td><?php echo $row['ss_perc']; ?></td>
+                  	<td><div class="progress">
+     				<?php $val= $row['ss_perc']; ?>
+   					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $val; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $val; ?>%;">
+   	 				</div></td>
                   	<td><form action="donatetohhf.php" method="post"><input type="submit" value="Donate" style="color:black"></form>  </td>
                     </tr>
                     <?php 
