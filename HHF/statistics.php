@@ -1,3 +1,6 @@
+
+
+
 <?php
 session_start();
 
@@ -80,4 +83,7 @@ header("Content-type:image/png");
  
 
 ?>
+
+</body>
+</html>
 

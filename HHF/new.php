@@ -190,7 +190,7 @@
             </div>
         </header>
         
-		
+	
 		<!--
 		Start Main Features
 		==================================== -->
@@ -203,7 +203,8 @@
 						<div class="item">
 							
 							<div class="features-item">
-								
+								<?php	include('progbar.php');  ?>
+                                <br />
 								<!-- features media -->
 								<div class="col-md-6 feature-media media-wrapper wow fadeInUp" data-wow-duration="500ms">
 									<img src="img/2.jpg" alt="band" >
